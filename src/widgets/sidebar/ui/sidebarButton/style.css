@@ -1,0 +1,14 @@
+.sidebar__button {
+    /* background-color: #282b34; */
+
+    padding: 12px 12px 12px 24px;
+    border-radius: 8px;
+    /* color: #FFFFFF; */
+    color: #323541;
+    font-size: 18px;
+    font-family: 'Ubuntu';
+}
+
+.sidebar__button:hover {
+    background-color: #4E46B41F;
+}

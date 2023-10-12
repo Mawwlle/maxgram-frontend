@@ -1,0 +1,60 @@
+.sign {
+    width: 100vw;
+    height: 100%;
+    position: relative;
+    background-image: url('/src/img/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #FFFFFF;
+}
+
+.sign__container {
+    width: 640px;
+    border-radius: 8px;
+    background-color: #ce3e9d15;
+    padding: 16px 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sign__container__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sign__container__controls-link {
+    color: #FFFFFF;
+}
+
+.sign__container__controls-link:hover {
+    color: #646cff;
+}
+
+.sign__container__switch p {
+    font-weight: bold;
+    margin: 0;
+}
+
+.sign__container__switch span:hover {
+    cursor: pointer;
+    color: #646cff;
+}
+
+.sign__container__field {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    color: #FFFFFF;
+}
+
+.sign__container__field input {
+    margin-top: 8px;
+}
+
+.sign__container__submit {
+    margin-top: 16px;
+    color: #FFFFFF;
+}

@@ -1,0 +1,14 @@
+.ui-label {
+    display: flex;
+    height: 32px;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 0 0;
+
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: 'Ubuntu';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px; /* 155.556% */
+}
