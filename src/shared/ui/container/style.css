@@ -1,0 +1,8 @@
+.ui-container {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 24px;
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    color: #000000;
+}

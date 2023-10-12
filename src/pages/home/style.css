@@ -1,0 +1,25 @@
+.home {
+    padding: 24px;
+    /* background-color: black; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('/src/img/background.jpg');
+    height: 100%;
+    position: relative;
+}
+
+.home__content {
+    padding: 16px 24px;
+    border-radius: 8px;
+    width: max-content;
+    height: max-content;
+    position: absolute;
+    transform: translate(50%, 50%);
+    /* background-color: rgba(0, 0, 0, 0.3); */
+    background-color: #ce3e9d15;
+    color: #FFFFFF;
+}
+
+.home__button {
+    color: #FFFFFF;
+}
