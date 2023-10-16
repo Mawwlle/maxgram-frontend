@@ -1,0 +1,22 @@
+.loader {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.loader__text-light {
+    color: #fff;
+}
+
+.loader__text-gray {
+    color: #dadada;
+}
+
+.loader__text-pink {
+    color: #ff5487;
+}

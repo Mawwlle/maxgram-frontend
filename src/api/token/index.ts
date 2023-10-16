@@ -1,15 +1,11 @@
 import { AxiosResponse } from 'axios';
-import { CreateToken, RefreshToken, TokenAPIType } from './types';
+import { CreateToken, CreateTokenData, RefreshToken, TokenAPIType } from './types';
 import httpClient from '../../utils/httpClient';
 
 const createToken = (
-    username: string,
-    password: string
+    data: CreateTokenData
 ): Promise<AxiosResponse<CreateToken>> => {
-    return httpClient.post<CreateToken>('/api/v1/token/', {
-        username,
-        password
-    });
+    return httpClient.post<CreateToken>('/api/v1/token/', data);
 };
 
 const refreshToken = (

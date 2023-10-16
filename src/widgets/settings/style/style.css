@@ -1,0 +1,13 @@
+.settings__container__field {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+
+.settings__container__field input {
+    margin-top: 8px;
+}
+
+.settings__container__submit {
+    margin-top: 16px;
+}

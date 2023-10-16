@@ -12,10 +12,9 @@ const handleRefreshToken = (refreshToken: string, originalRequest: InternalAxios
     api.token.refreshToken(refreshToken)
         .then((resp) => {
             localStorage.setItem('access_token', resp.data.access);
-            // localStorage.setItem('refresh_token', resp.data.refresh);
 
             setTimeout(() => location.reload, 300);
-            // return httpClient.request(originalRequest);
+            return httpClient.request(originalRequest);
         })
         .catch((refreshError) => {
             console.error('Error refreshing token:', refreshError);
@@ -24,10 +23,6 @@ const handleRefreshToken = (refreshToken: string, originalRequest: InternalAxios
 };
 
 const logoutAndClearTokens = () => {
-    const token = localStorage.getItem('refresh_token');
-    if (token) {
-        // api.auth.logout(token);
-    }
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
 };

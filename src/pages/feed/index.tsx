@@ -1,44 +1,79 @@
-import Container from '../../shared/ui/container';
+import { useEffect, useState } from 'react';
 import './style.css';
-import Paperclip from '../../icons/paperclip.svg';
+import api from '../../api';
+import { PhotoListData, PhotoListItem } from '../../api/photos/types';
+import FeedItem from '../../entities/feedItem';
+import useIntersect from '../../hooks/useIntersect';
+import Loader from '../../shared/ui/loader';
 
 const Feed = () => {
-  return (
-    <div className={'feed'}>
-      {/* <Container> */}
-        <div className={'feed__container'}>
-          <div className={'feed__item'}>
-            <img src={Paperclip} className={'feed__item__paperclip'} />
-            <div className={'feed__item__image'}>
-              <img src="https://i.pinimg.com/736x/e2/3e/b8/e23eb8d47b92ce2c8432d4e85472d243.jpg" alt="" />
+    const [isPhotosLoading, setIsPhotosLoading] = useState<boolean>(true);
+    const [photosPage, setPhotosPage] = useState<number>(1);
+    const [isPhotosNext, setIsPhotosNext] = useState<boolean>(false);
+    const [photosList, setPhotosList] = useState<Array<PhotoListItem>>([]);
+    const [photosTotal, setPhotosTotal] = useState<number>(0);
+
+    useEffect(() => {
+        if (isPhotosLoading) {
+            const params: PhotoListData = {
+            page: photosPage,
+            };
+    
+            api.photos.getPhotosList(params)
+                .then((resp) => {
+                    setPhotosList(resp.data.results);
+                    setPhotosTotal(resp.data.count);
+
+                    if (resp.data.next) {
+                        setIsPhotosNext(true);
+                    }
+
+                    setIsPhotosLoading(false);
+                })
+                .catch((e) => {
+                    console.warn('Failed to get photos', e);
+                    setIsPhotosLoading(false);
+                })
+        }
+    }, []);
+
+    const $loadMorePhotos = useIntersect((entry) => {
+        if(entry.isIntersecting) {
+            setPhotosPage((prev) => prev + 1);
+            setIsPhotosLoading(true);
+        }
+    }, {
+        rootMargin: '500px 0px'
+    });
+
+
+    const elLoadPhotos = () => {
+        if(!isPhotosLoading && photosList.length && isPhotosNext && photosList.length != photosTotal) {
+            return <Loader ref={$loadMorePhotos} />;
+        }
+    };
+
+    
+    if (isPhotosLoading) {
+        return (
+            <div>
+                Loading...
             </div>
-            <div className={'feed__item__description'}>Home... / Дом...</div>
-          </div>
-          <div className={'feed__item'}>
-            <img src={Paperclip} className={'feed__item__paperclip'} />
-            <div className={'feed__item__image'}>
-              <img src="https://i.pinimg.com/736x/e2/3e/b8/e23eb8d47b92ce2c8432d4e85472d243.jpg" alt="" />
+        );
+    }
+
+    return (
+        <div className={'feed'}>
+        {/* <Container> */}
+            <div className={'feed__container'}>
+                {photosList?.map((photo) => {
+                    return <FeedItem key={photo.id} photo={photo} />
+                })}
+                {elLoadPhotos()}
             </div>
-            <div className={'feed__item__description'}>Home... / Дом...</div>
-          </div>
-          <div className={'feed__item'}>
-            <img src={Paperclip} className={'feed__item__paperclip'} />
-            <div className={'feed__item__image'}>
-              <img src="https://i.pinimg.com/736x/e2/3e/b8/e23eb8d47b92ce2c8432d4e85472d243.jpg" alt="" />
-            </div>
-            <div className={'feed__item__description'}>Home... / Дом...</div>
-          </div>
-          <div className={'feed__item'}>
-            <img src={Paperclip} className={'feed__item__paperclip'} />
-            <div className={'feed__item__image'}>
-              <img src="https://i.pinimg.com/736x/e2/3e/b8/e23eb8d47b92ce2c8432d4e85472d243.jpg" alt="" />
-            </div>
-            <div className={'feed__item__description'}>Home... / Дом...</div>
-          </div>
+        {/* </Container> */}
         </div>
-      {/* </Container> */}
-    </div>
-  )
+    )
 }
 
 export default Feed;
