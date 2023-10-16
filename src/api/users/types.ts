@@ -34,4 +34,5 @@ export type UsersAPIType = {
     updateUser(id: number, data: CreateUserData): Promise<AxiosResponse<UserItem>>;
     partialUpdateUser(id: number, data: PartialUpdateUserData): Promise<AxiosResponse<UserItem>>;
     destroyUser(id: number): Promise<AxiosResponse<void>>;
+    getSelfUser(): Promise<AxiosResponse<UserItem>>;
 };

@@ -32,7 +32,7 @@ export type PartialUpdatePhotoData = {
 export type PhotosAPIType = {
     getPhotosList(data: PhotoListData): Promise<AxiosResponse<PaginationResponse<PhotoListItem>>>;
     createPhoto(data: CreatePhotoData): Promise<AxiosResponse<PhotoListItem>>;
-    getPhotoItem(id: number): Promise<AxiosResponse<PhotoListItem>>;
+    getPhotoItem(id: number): Promise<AxiosResponse>;
     updatePhoto(id: number, data: CreatePhotoData): Promise<AxiosResponse<PhotoListItem>>;
     partialUpdatePhoto(id: number, data: PartialUpdatePhotoData): Promise<AxiosResponse<PhotoListItem>>;
     destroyPhoto(id: number): Promise<AxiosResponse<void>>;

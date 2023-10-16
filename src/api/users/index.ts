@@ -13,7 +13,8 @@ const getUsersList = (page: number): Promise<AxiosResponse<PaginationResponse<Us
 
 const createUser = (data: CreateUserData): Promise<AxiosResponse<UserItem>> => {
     return httpClient.post<UserItem>('/api/v1/users/', {
-        ...data
+        ...(data.username && {username: data.username}),
+        ...(data.password && {password: data.password})
     });
 };
 
@@ -33,11 +34,16 @@ const destroyUser = (id: number): Promise<AxiosResponse<void>> => {
     return httpClient.delete(`/api/v1/users/${id}/`);
 };
 
+const getSelfUser = (): Promise<AxiosResponse<UserItem>> => {
+    return httpClient.get('/api/v1/users/me/');
+};
+
 export default {
     getUsersList,
     createUser,
     getUser,
     updateUser,
     partialUpdateUser,
-    destroyUser
+    destroyUser,
+    getSelfUser
 } as UsersAPIType;

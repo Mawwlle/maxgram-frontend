@@ -65,6 +65,17 @@
     border-left: 1px solid gray;
 }
 
+.sidebar__create {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.sidebar__create__button {
+    background: none;
+    color: #323541;
+}
+
 .sidebar__controls {
     display: flex;
     flex-direction: column;

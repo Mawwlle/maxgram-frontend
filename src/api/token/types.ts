@@ -1,5 +1,10 @@
 import { AxiosResponse } from 'axios';
 
+export type CreateTokenData = {
+    username: string;
+    password: string;
+};
+
 export type CreateToken = {
     access: string;
     refresh: string;
@@ -11,8 +16,7 @@ export type RefreshToken = {
 
 export type TokenAPIType = {
     createToken(
-        username: string,
-        password: string
+        data: CreateTokenData
     ): Promise<AxiosResponse<CreateToken>>;
     refreshToken(
         refresh: string

@@ -1,0 +1,9 @@
+.input-field {
+    position: relative;
+}
+
+.input-field__span {
+    position: absolute;
+    bottom: -25px;
+    right: 0;
+}

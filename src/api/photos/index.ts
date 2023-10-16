@@ -15,8 +15,10 @@ const createPhoto = (data: CreatePhotoData): Promise<AxiosResponse<PhotoListItem
     return httpClient.post<PhotoListItem>('/api/v1/photos/', data);
 };
 
-const getPhotoItem = (id: number): Promise<AxiosResponse<PhotoListItem>> => {
-    return httpClient.get<PhotoListItem>(`/api/v1/photos/${id}/`);
+const getPhotoItem = (id: number): Promise<AxiosResponse> => {
+    return httpClient.get(`/api/v1/photos/${id}/`, {
+        responseType: 'blob'
+    });
 };
 
 const updatePhoto = (id: number, data: CreatePhotoData): Promise<AxiosResponse<PhotoListItem>> => {

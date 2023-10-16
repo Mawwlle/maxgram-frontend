@@ -19,6 +19,14 @@
     transform: translate(-50%, -50%);
 }
 
+.sign__container__success p {
+    cursor: pointer;
+}
+
+.sign__container__success p:hover {
+    color:#646cff;
+}
+
 .sign__container__controls {
     display: flex;
     justify-content: space-between;
@@ -31,6 +39,10 @@
 
 .sign__container__controls-link:hover {
     color: #646cff;
+}
+
+.sign__container__controls-link-icon {
+    margin-right: 8px;
 }
 
 .sign__container__switch p {

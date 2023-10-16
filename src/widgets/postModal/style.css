@@ -1,0 +1,41 @@
+.post__modal__close {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #00000050;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.post__modal__content {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.post__modal__content__photo {
+    width: 512px;
+    height: 512px;
+    background-color: #EBEBEB;
+}
+
+.post__modal__content__photo img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+}
+
+.post__modal__content__params {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.post__modal__content__submit {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
