@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PhotoListItem } from '../../api/photos/types';
 import api from '../../api';
 import Paperclip from '../../icons/paperclip.svg';
@@ -51,8 +51,8 @@ const FeedItem = (props: IItemProps) => {
         });
 
         const params: LikesListData = {
-            photo: props.photo.id,
-            user: user?.id
+            ...(props.photo.id && {photo: props.photo.id}),
+            ...(user?.id && {user: user?.id})
         };
 
         api.likes.getLikesList(params)
@@ -169,6 +169,8 @@ const FeedItem = (props: IItemProps) => {
         if(!isCommentsLoading && commentList.length && isCommentsNext && commentList.length != commentsTotal) {
             return <Loader ref={$loadMoreComments} />;
         }
+
+        return null;
     };
 
     return (

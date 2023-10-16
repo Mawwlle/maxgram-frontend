@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 import api from '../../api';
 import { PhotoListData, PhotoListItem } from '../../api/photos/types';
@@ -51,6 +51,8 @@ const Feed = () => {
         if(!isPhotosLoading && photosList.length && isPhotosNext && photosList.length != photosTotal) {
             return <Loader ref={$loadMorePhotos} />;
         }
+
+        return null;
     };
 
     

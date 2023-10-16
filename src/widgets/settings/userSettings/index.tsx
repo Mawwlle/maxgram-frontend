@@ -1,3 +1,4 @@
+import React from 'react';
 import '../style/style.css';
 import InputField from '../../../entities/inputField';
 import { useForm, FieldValues } from 'react-hook-form';

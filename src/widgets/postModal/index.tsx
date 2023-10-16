@@ -1,3 +1,4 @@
+import React from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import Button from '../../shared/ui/button';
 import Container from '../../shared/ui/container'
@@ -36,14 +37,14 @@ const PostModal = () => {
                         console.log('photo created', resp.data);
                     })
                     .catch((e) => {
-                        console.warn('error creating photo');
+                        console.warn('error creating photo', e);
                     });
             }
         };
 
     }
     return (
-        <>
+        <div className={'post__modal'}>
             <div className={'post__modal__close'} onClick={onClickClose} />
             <div className={'post__modal__content'}>
                 <Container>
@@ -61,7 +62,7 @@ const PostModal = () => {
                     </form>
                 </Container>
             </div>
-        </>
+        </div>
     );
 };
 

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import InputField from '../../entities/inputField';
 import Button from '../../shared/ui/button';
 import './style.css';
-import { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import api from '../../api';
 import { CreateUserData } from '../../api/users/types';

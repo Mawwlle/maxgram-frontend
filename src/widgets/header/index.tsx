@@ -1,3 +1,4 @@
+import React from 'react';
 import './style/style.css';
 import Logo from '../../icons/logo.svg';
 

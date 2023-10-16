@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import LoaderIcon from '../../../icons/loader';
 import './style.css';
 
