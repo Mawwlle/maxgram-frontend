@@ -1,5 +1,7 @@
-VERSION := $(shell ./docker/version.sh)
+.PHONY: build
+build:
+	@docker build -t mawlle/maxgram-frontend -f ci-cd/Dockerfile .
 
-.PHONY: version
-version:
-	@echo $(VERSION)
+.PHONY: push
+push:
+	@docker push mawlle/maxgram-frontend
