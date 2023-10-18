@@ -2,6 +2,10 @@
   "name": "maxgram",
   "private": true,
   "version": "0.0.1",
+  "author": {
+    "name": "Gemsioxa",
+    "email": "gemsioxabusiness@gmail.com"
+  },
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js --hot",
     "dev": "vite",
