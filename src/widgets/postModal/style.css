@@ -1,9 +1,17 @@
-.post__modal__close {
+.post__modal {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #00000050;
+    left: 0;
     z-index: 1;
+}
+
+.post__modal__close {
+    /* position: absolute; */
+    width: 100%;
+    height: 100%;
+    background-color: #00000050;
+    /* z-index: 1; */
     cursor: pointer;
 }
 

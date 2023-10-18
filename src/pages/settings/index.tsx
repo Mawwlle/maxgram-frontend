@@ -3,7 +3,7 @@ import Container from '../../shared/ui/container';
 import UserPassword from '../../widgets/settings/userPassword';
 import UserSettings from '../../widgets/settings/userSettings';
 import './style.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const Settings = () => {
     const [isShowModal, setIsShowModal] = useState<{title: string} | null>(null);

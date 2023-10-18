@@ -1,4 +1,4 @@
-import { ReactElement, Fragment } from 'react';
+import React, { ReactElement, Fragment } from 'react';
 
 export interface IPayload {
     // tslint:disable-next-line no-any

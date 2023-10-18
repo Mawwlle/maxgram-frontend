@@ -1,3 +1,4 @@
+import React from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import Button from '../../shared/ui/button';
 import Container from '../../shared/ui/container'
@@ -6,7 +7,6 @@ import { useAppDispatch } from '../../store/hooks';
 import { closeModal } from '../../store/modal';
 import './style.css';
 import api from '../../api';
-import { CreatePhotoData } from '../../api/photos/types';
 
 const PostModal = () => {
     const dispatch = useAppDispatch();
@@ -20,30 +20,23 @@ const PostModal = () => {
     }
 
     const onClickSubmit = (data: FieldValues) => {
-        console.log(data.photo);
-        console.log(data.description);
-        const reader = new FileReader();
-        reader.readAsBinaryString(data.photo[0]);
-        reader.onload = () => {
-            if (reader.result) {
-                const params: CreatePhotoData = {
-                    image: reader.result?.toString(),
-                    caption: data.description
-                };
-        
-                api.photos.createPhoto(params)
-                    .then((resp) => {
-                        console.log('photo created', resp.data);
-                    })
-                    .catch((e) => {
-                        console.warn('error creating photo');
-                    });
-            }
-        };
+        const formData = new FormData();
 
+        const selectedFile = data.photo[0];
+        formData.append("image", selectedFile);
+        formData.append("caption", data.description);
+
+        api.photos.createPhoto(formData)
+            .then((resp) => {
+                console.log('photo created', resp.data);
+                onClickClose();
+            })
+            .catch((e) => {
+                console.warn('error creating photo', e.message);
+            });
     }
     return (
-        <>
+        <div className={'post__modal'}>
             <div className={'post__modal__close'} onClick={onClickClose} />
             <div className={'post__modal__content'}>
                 <Container>
@@ -52,7 +45,7 @@ const PostModal = () => {
                     </div>
                     <form onSubmit={handleSubmit((data) => onClickSubmit(data))}>
                         <div className={'post__modal__content__params'}>
-                            <input {...register('photo')} type='file' />
+                            <input {...register('photo')} id={'photoUpload'} type='file' />
                             <Input register={register} name={'description'} type='text' placeholder='Type description'/>
                         </div>
                         <div className={'post__modal__content__submit'}>
@@ -61,7 +54,7 @@ const PostModal = () => {
                     </form>
                 </Container>
             </div>
-        </>
+        </div>
     );
 };
 

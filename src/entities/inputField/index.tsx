@@ -1,3 +1,4 @@
+import React from 'react';
 import Input from '../../shared/ui/input';
 import Label from '../../shared/ui/label/label';
 import { UseFormRegister, Merge, FieldValues, FieldError, FieldErrorsImpl } from 'react-hook-form';
@@ -5,16 +6,16 @@ import './style.css';
 
 interface IProps {
     title?: string;
-    placeholder?: string;
-    defaultValue?: string;
-    className?: string;
-    type?: string;
-    name?: string;
+    placeholder?: string | undefined;
+    defaultValue?: string | undefined;
+    className?: string | undefined;
+    type?: string | undefined;
+    name?: string | undefined;
     register: UseFormRegister<FieldValues>;
-    error?: string | FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
-    required?: boolean;
-    minLength?: number;
-    maxLength?: number;
+    error?: string | FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined;
+    required?: boolean | undefined;
+    minLength?: number | undefined;
+    maxLength?: number | undefined;
 }
 
 const InputField = (props: IProps) => {

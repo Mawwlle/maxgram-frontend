@@ -1,3 +1,4 @@
+import React from 'react';
 import './style/style.css';
 import SidebarButton from './ui/sidebarButton';
 import Logo from '../../icons/logo.svg';

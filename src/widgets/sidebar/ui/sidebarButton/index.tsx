@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
 
@@ -8,7 +9,6 @@ interface IProps {
 }
 
 const SidebarButton = (props: IProps) => {
-
     if (props.path) {
         return (
             <Link to={`/${props.path}`} className={'sidebar__button'}>
@@ -24,6 +24,8 @@ const SidebarButton = (props: IProps) => {
             </button>
         )
     }
+
+    return null;
 }
 
 export default SidebarButton;
