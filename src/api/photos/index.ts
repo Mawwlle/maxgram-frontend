@@ -11,8 +11,12 @@ const getPhotosList = (data: PhotoListData): Promise<AxiosResponse<PaginationRes
     });
 };
 
-const createPhoto = (data: CreatePhotoData): Promise<AxiosResponse<PhotoListItem>> => {
-    return httpClient.post<PhotoListItem>('/api/v1/photos/', data);
+const createPhoto = (data: FormData): Promise<AxiosResponse<PhotoListItem>> => {
+    return httpClient.post<PhotoListItem>('/api/v1/photos/', data, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
 };
 
 const getPhotoItem = (id: number): Promise<AxiosResponse> => {

@@ -7,7 +7,6 @@ import Input from '../../shared/ui/input';
 import { useForm, FieldValues } from 'react-hook-form';
 import { CommentsListData, CommentsListItem, CreateCommentData } from '../../api/comments/types';
 import Like from '../../icons/like.svg';
-import Comment from '../../icons/comment.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LikesListData } from '../../api/likes/types';
 import { useAppSelector } from '../../store/hooks';
@@ -15,9 +14,11 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart';
 import useIntersect from '../../hooks/useIntersect';
 import Loader from '../../shared/ui/loader';
 import FeedItemComment from '../feedItemComment';
+import { faComment, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 interface IItemProps {
     photo: PhotoListItem;
+    updateList?: () => void;
 }
   
 const FeedItem = (props: IItemProps) => {
@@ -32,8 +33,10 @@ const FeedItem = (props: IItemProps) => {
     const [isLoadingComments, setIsLoadingComments] = useState<boolean>(true);
     const [isLoadingLike, setIsLoadingLike] = useState<boolean>(false);
     const [isLiked, setIsLiked] = useState<number | null>(null);
+    const [likesTotal, setLikesTotal] = useState<number | null>(null);
 
     const user = useAppSelector((store) => store.user.user);
+    const isOwner = user?.id === props.photo.user.id;
 
     const {
         register,
@@ -60,7 +63,9 @@ const FeedItem = (props: IItemProps) => {
                 if (resp.data.results.length) {
                     setIsLiked(resp.data.results[0].id);
                 }
-            })
+            });
+        
+        _updateLikes();
     }, []);
 
     useEffect(() => {
@@ -93,7 +98,7 @@ const FeedItem = (props: IItemProps) => {
                     setIsCommentsLoading(false);
                     setIsLoadingComments(false);
                     setIsCommentsLoadMore(false);
-                    console.warn('Error getting comments', e);
+                    console.warn('Error getting comments', e.message);
                 });
         }
     }, [isLoadingComments]);
@@ -104,22 +109,34 @@ const FeedItem = (props: IItemProps) => {
                 .then((resp) => {
                     console.log('Liked', resp.data);
                     setIsLiked(resp.data.id);
+                    _updateLikes();
                 })
                 .catch((e) => {
-                    console.warn('Error creating like: ', e);
+                    console.warn('Error creating like: ', e.message);
                 });
         } else if (isLoadingLike && isLiked) {
             api.likes.destroyLike(isLiked)
                 .then((resp) => {
                     console.log('Successfully destroyed like: ', resp.data);
                     setIsLiked(null);
+                    _updateLikes();
                 })
                 .catch((e) => {
-                    console.warn('Error destroying like: ', e);
+                    console.warn('Error destroying like: ', e.message);
                 });
         }
         setIsLoadingLike(false);
-    }, [isLoadingLike])
+    }, [isLoadingLike]);
+
+    const _updateLikes = () => {
+        const params: LikesListData = {
+            photo: props.photo.id
+        };
+        api.likes.getLikesList(params)
+            .then((resp) => {
+                setLikesTotal(resp.data.count);
+            });
+    };
 
     const onCommentClick = () => {
         setIsPhotoClicked((prev) => !prev);
@@ -127,6 +144,20 @@ const FeedItem = (props: IItemProps) => {
 
     const onLikeClick = () => {
         setIsLoadingLike(true);
+    };
+
+    const onDeleteClick = () => {
+        if (props.photo.user.id === user?.id) {
+            api.photos.destroyPhoto(props.photo.id)
+                .then(() => {
+                    if (props.updateList) {
+                        props.updateList();
+                    }
+                })
+                .catch((e) => {
+                    console.warn('Failed to destroy photo', e.message);
+                });
+        }
     }
 
     const onSubmitComment = (data: FieldValues) => {
@@ -144,7 +175,7 @@ const FeedItem = (props: IItemProps) => {
                     setIsLoadingComments(true);
                 })
                 .catch((e) => {
-                    console.warn('error creating comment', e);
+                    console.warn('error creating comment', e.message);
                 });
         }
     };
@@ -211,11 +242,19 @@ const FeedItem = (props: IItemProps) => {
                         }
                     </div>
                     <div onClick={onCommentClick} className={'feed__item__description__controls-comment'}>
-                        <img src={Comment} alt="" />
+                        <FontAwesomeIcon icon={faComment} />
                     </div>
+                    {isOwner &&
+                        <div onClick={onDeleteClick} className={'feed__item__description__controls-delete'}>
+                            <FontAwesomeIcon icon={faTrashCan} />
+                        </div>
+                    }
                 </div>
                 <div className={'feed__item__description__title'}>
                     {props.photo.caption}
+                </div>
+                <div className={'feed__item__description__likes'}>
+                    Likes: {likesTotal}
                 </div>
             </div>
         </div>

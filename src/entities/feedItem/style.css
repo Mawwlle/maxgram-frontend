@@ -72,7 +72,15 @@
     position: absolute;
     display: flex;
     left: 5px;
-    top: 40%;
+    top: 16px;
+}
+
+.feed__item__description__likes {
+    position: absolute;
+    display: flex;
+    right: 5px;
+    top: 16px;
+    font-weight: bold;
 }
 
 .feed__item__description__controls-like {
@@ -92,10 +100,21 @@
     height: 24px;
 }
 
+.feed__item__description__controls-delete {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.feed__item__description__controls-delete img {
+    height: 24px;
+}
+
 .feed__item__description__title {
     margin-top: 10px;
     line-height: 28px;
     font-size: 24px;
     text-align: center;
     font-family: Pacifico;
+    width: 50%;
+    min-height: 32px;
 }

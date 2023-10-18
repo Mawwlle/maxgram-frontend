@@ -10,6 +10,7 @@ const Feed = () => {
     const [isPhotosLoading, setIsPhotosLoading] = useState<boolean>(true);
     const [photosPage, setPhotosPage] = useState<number>(1);
     const [isPhotosNext, setIsPhotosNext] = useState<boolean>(false);
+    const [isPhotosMerge, setIsPhotosMerge] = useState<boolean>(false);
     const [photosList, setPhotosList] = useState<Array<PhotoListItem>>([]);
     const [photosTotal, setPhotosTotal] = useState<number>(0);
 
@@ -21,11 +22,13 @@ const Feed = () => {
     
             api.photos.getPhotosList(params)
                 .then((resp) => {
-                    setPhotosList(resp.data.results);
+                    setPhotosList((prev) => isPhotosMerge ? [...prev, ...resp.data.results] : resp.data.results);
                     setPhotosTotal(resp.data.count);
 
                     if (resp.data.next) {
                         setIsPhotosNext(true);
+                    } else {
+                        setIsPhotosNext(false);
                     }
 
                     setIsPhotosLoading(false);
@@ -35,11 +38,18 @@ const Feed = () => {
                     setIsPhotosLoading(false);
                 })
         }
-    }, []);
+    }, [isPhotosLoading]);
+
+    const updatePhotoList = () => {
+        setPhotosPage(1);
+        setIsPhotosMerge(false);
+        setIsPhotosLoading(true);
+    }
 
     const $loadMorePhotos = useIntersect((entry) => {
-        if(entry.isIntersecting) {
+        if(entry.isIntersecting && !isPhotosLoading && isPhotosNext) {
             setPhotosPage((prev) => prev + 1);
+            setIsPhotosMerge(true);
             setIsPhotosLoading(true);
         }
     }, {
@@ -69,7 +79,7 @@ const Feed = () => {
         {/* <Container> */}
             <div className={'feed__container'}>
                 {photosList?.map((photo) => {
-                    return <FeedItem key={photo.id} photo={photo} />
+                    return <FeedItem key={photo.id} photo={photo} updateList={updatePhotoList} />
                 })}
                 {elLoadPhotos()}
             </div>
