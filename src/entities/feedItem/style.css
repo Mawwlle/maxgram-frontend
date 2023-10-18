@@ -66,6 +66,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 512px;
 }
 
 .feed__item__description__controls {

@@ -12,6 +12,7 @@ interface IProps {
     required?: boolean | undefined;
     minLength?: number | undefined;
     maxLength?: number | undefined;
+    maxValue?: number | undefined;
     error?: string | FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined;
 }
 
@@ -27,6 +28,7 @@ const Input = (props: IProps) => {
             })} 
             name={props.name} 
             type={props.type ? props.type : 'text'} 
+            maxLength={props.maxLength}
             className={`ui-input ${props.className} ${props.error && 'ui-input-error'}`} 
             defaultValue={props.defaultValue || ''} 
             placeholder={props.placeholder}
