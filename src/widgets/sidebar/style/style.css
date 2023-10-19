@@ -4,17 +4,16 @@
     height: 100vh;
     position: fixed;
     /* background-color: #282b34; */
-    background: #FFFFFF;
+    background: var(--gohan);
     display: flex;
     flex-direction: column;
 }
 
 .sidebar__logo {
     height: 32px;
-    /* width: 100%; */
     display: flex;
-    color: #646cff;
-    /* color: #FFFFFF; */
+    align-items: center;
+    color: var(--piccolo);
     font-size: 20px;
     font-weight: bold;
     padding: 16px 24px;
@@ -22,7 +21,6 @@
 
 .sidebar__logo img {
     height: 32px;
-    /* width: 32px; */
 }
 
 .sidebar__profile {
@@ -31,7 +29,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: #323541;
+    color: var(--bulma);
 }
 
 .sidebar__profile-avatar {
@@ -39,7 +37,7 @@
     height: 128px;
     border-radius: 50%;
     box-sizing: border-box;
-    background-color: #ffffff;
+    background-color: var(--gohan);
 }
 
 .sidebar__profile h3 {
@@ -55,14 +53,14 @@
 
 .sidebar__profile__info-item h6 {
     margin: 10px 0 0;
-    color: gray;
+    color: var(--main-trunks);
 }
 .sidebar__profile__info-item:first-child {
-    border-right: 1px solid gray;
+    border-right: 1px solid var(--main-trunks);
 }
 
 .sidebar__profile__info-item:last-child {
-    border-left: 1px solid gray;
+    border-left: 1px solid var(--main-trunks);
 }
 
 .sidebar__create {
@@ -73,7 +71,7 @@
 
 .sidebar__create__button {
     background: none;
-    color: #323541;
+    color: var(--main-trunks);
 }
 
 .sidebar__controls {
@@ -99,8 +97,7 @@
 }
 
 .sidebar__controls__logout-separator {
-    /* border: 1px solid #323541; */
-    border: 1px solid #F5F5F5;
+    border: 1px solid var(--goku);
     margin: 0 24px 12px;
     border-radius: 8px;
 }

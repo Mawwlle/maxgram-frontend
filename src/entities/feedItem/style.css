@@ -45,9 +45,10 @@
 .feed__item__paperclip {
     position: absolute;
     width: 64px;
-    rotate: 90deg;
+    height: 64px;
+    rotate: 270deg;
     left: 240px;
-    top: -32px;
+    top: -36px;
 }
 
 .feed__item__image {
@@ -88,17 +89,17 @@
     cursor: pointer;
 }
 
-.feed__item__description__controls-like img {
-    height: 24px;
+.feed__item__description__controls-like:hover svg path {
+    fill: var(--bulma);
+}
+
+.feed__item__description__controls-like-active path {
+    fill: var(--bulma);
 }
 
 .feed__item__description__controls-comment {
     cursor: pointer;
     margin-left: 10px;
-}
-
-.feed__item__description__controls-comment img {
-    height: 24px;
 }
 
 .feed__item__description__controls-delete {

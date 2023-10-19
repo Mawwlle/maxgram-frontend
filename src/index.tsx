@@ -16,6 +16,7 @@ import { useEffect, useState } from 'react';
 import api from './api';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import { remove, set } from './store/user';
+import './variables.css';
 
 const AppRouter = () => {
   const modal = useAppSelector((store) => store.modal);

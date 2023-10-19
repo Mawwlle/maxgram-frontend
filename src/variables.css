@@ -1,0 +1,20 @@
+#root {
+    --piccolo: #4E46B4;
+    --hover: #00000014;
+    --ghost: #4E46B41F;
+    --hit: #40A69F;
+    --beerus: #EBEBEB;
+    --main-beerus: #E2E2E2;
+    --goku: #F5F5F5;
+    --gohan: #FFFFFF;
+    --backdrop: #0000008F;
+    --bulma: #000000;
+    --trunks: #D9D9D9;
+    --main-trunks: #595D62;
+    --goten: #FFFFFF;
+    --jiren: #4E46B41F;
+    --main-jiren: rgba(78, 70, 180, 0.12);
+    --dodoria: #D33030;
+    --heles: #00000004;
+    --piccolo-jiren-hover: #E0DFED;
+}

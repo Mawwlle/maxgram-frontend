@@ -1,0 +1,13 @@
+.svg-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--bulma);
+}
+
+.svg-icon > g {
+    fill: var(--gohan);
+}
+
+.logo-icon > g{
+    fill: var(--piccolo);
+}

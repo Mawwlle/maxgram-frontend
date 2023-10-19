@@ -4,14 +4,14 @@
     padding: 12px 12px 12px 24px;
     border-radius: 8px;
     /* color: #FFFFFF; */
-    color: #323541;
+    color: var(--main-trunks);
     font-size: 18px;
     font-family: 'Ubuntu';
     transition: color 0.25s;
 }
 
 .sidebar__button:hover {
-    background-color: #4E46B41F;
+    background-color: var(--main-jiren);
 }
 
 .sidebar__button__logout {
@@ -19,12 +19,12 @@
     border-radius: 8px;
     border: none;
     background: none;
-    color: #323541;
+    color: var(--main-trunks);
     padding: 12px 12px 12px 24px;
     font-size: 18px;
     text-align: left;
 }
 
 .sidebar__button__logout:hover {
-    background-color: #4E46B41F;
+    background-color: var(--main-jiren);
 }

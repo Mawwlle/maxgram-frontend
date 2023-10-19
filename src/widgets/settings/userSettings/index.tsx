@@ -3,14 +3,16 @@ import '../style/style.css';
 import InputField from '../../../entities/inputField';
 import { useForm, FieldValues } from 'react-hook-form';
 import Button from '../../../shared/ui/button';
-import { useAppSelector } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import api from '../../../api';
+import { set } from '../../../store/user';
 
 interface IProps {
     onClickSave: (text: string) => void;
 }
 
 const UserSettings = (props: IProps) => {
+    const dispatch = useAppDispatch();
     const user = useAppSelector((store) => store.user.user);
 
     const {
@@ -32,9 +34,14 @@ const UserSettings = (props: IProps) => {
                 .then((resp) => {
                     console.log('changes saved', resp.data);
                     props.onClickSave('Saved');
+                    api.users.getSelfUser()
+                        .then((payload) => {
+                            dispatch(set(payload.data));
+                        });
                 })
                 .catch((e) => {
-                    console.warn('something went wrong', e);
+                    console.warn('something went wrong', e.message);
+                    props.onClickSave('Something went wrong');
                 });
         }
     };

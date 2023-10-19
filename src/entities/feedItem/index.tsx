@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { PhotoListItem } from '../../api/photos/types';
 import api from '../../api';
-import Paperclip from '../../icons/paperclip.svg';
 import './style.css';
 import Input from '../../shared/ui/input';
 import { useForm, FieldValues } from 'react-hook-form';
 import { CommentsListData, CommentsListItem, CreateCommentData } from '../../api/comments/types';
-import Like from '../../icons/like.svg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LikesListData } from '../../api/likes/types';
 import { useAppSelector } from '../../store/hooks';
-import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart';
 import useIntersect from '../../hooks/useIntersect';
 import Loader from '../../shared/ui/loader';
 import FeedItemComment from '../feedItemComment';
-import { faComment, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import CommentIcon from '../../icons/comment';
+import LikeIcon from '../../icons/like';
+import PaperclipIcon from '../../icons/paperclip';
+import TrashcanIcon from '../../icons/trashcan';
 
 interface IItemProps {
     photo: PhotoListItem;
@@ -207,7 +206,7 @@ const FeedItem = (props: IItemProps) => {
     return (
         <div className={'feed__item'}>
             <div className={'feed__item__content'}>
-                <img src={Paperclip} className={'feed__item__paperclip'} />
+                <PaperclipIcon className={'feed__item__paperclip'} />
                 {isPhotoClicked ? 
                     <>
                         <div className={'feed__item__comment'}>
@@ -235,18 +234,14 @@ const FeedItem = (props: IItemProps) => {
             <div className={'feed__item__description'}>
                 <div className={'feed__item__description__controls'}>
                     <div onClick={onLikeClick} className={'feed__item__description__controls-like'}>
-                        {isLiked ? 
-                        <FontAwesomeIcon icon={faHeart} />
-                        :
-                        <img src={Like} alt="" />
-                        }
+                        <LikeIcon className={`${isLiked && 'feed__item__description__controls-like-active'}`}/>
                     </div>
                     <div onClick={onCommentClick} className={'feed__item__description__controls-comment'}>
-                        <FontAwesomeIcon icon={faComment} />
+                        <CommentIcon />
                     </div>
                     {isOwner &&
                         <div onClick={onDeleteClick} className={'feed__item__description__controls-delete'}>
-                            <FontAwesomeIcon icon={faTrashCan} />
+                            <TrashcanIcon />
                         </div>
                     }
                 </div>
