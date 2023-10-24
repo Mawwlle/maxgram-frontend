@@ -60,7 +60,7 @@ module.exports = (env = {}) => {
                     use: ["style-loader", "css-loader"],
                 },
                 {
-                    test: /\.(png|svg|ttf)$/,
+                    test: /\.(png|svg|ttf|ico)$/,
                     type: "asset/resource",
                 },
             ]

@@ -1,9 +1,9 @@
 .ui-button {
-    color: #000000;
-    border: 1px solid #EBEBEB;
+    color: var(--main-trunks);
+    border: 1px solid var(--beerus);
     background: none;
 }
 
 .ui-button:hover {
-    color: #646cff;
+    color: var(--piccolo);
 }
