@@ -17,6 +17,7 @@ import api from './api';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import { remove, set } from './store/user';
 import './variables.css';
+import Post from './pages/post';
 
 const AppRouter = () => {
   const modal = useAppSelector((store) => store.modal);
@@ -26,6 +27,7 @@ const AppRouter = () => {
       {/* <Header /> */}
       {modal && modal.type === 'post' && <PostModal />}
       <Routes>
+        <Route path="/post" element={<Post />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<Navigate to="/feed" />} />

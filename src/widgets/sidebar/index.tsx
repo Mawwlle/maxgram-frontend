@@ -4,8 +4,8 @@ import SidebarButton from './ui/sidebarButton';
 // import Logo from '../../icons/logo.svg';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { remove } from '../../store/user';
-import { openModal } from '../../store/modal';
 import LogoIcon from '../../icons/logo';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const user = useAppSelector((store) => store.user);
@@ -13,10 +13,6 @@ const Sidebar = () => {
 
   const onClickLogout = () => {
     dispatch(remove());
-  };
-
-  const onClickPost = () => {
-    dispatch(openModal('post'));
   };
 
   return (
@@ -50,9 +46,9 @@ const Sidebar = () => {
         </div> */}
       </div>
       <div className={'sidebar__create'}>
-        <button className={'sidebar__create__button'} onClick={onClickPost}>
+        <Link to={'/post'} className={'sidebar__create__button'}>
           Post
-        </button>
+        </Link>
       </div>
       <div className={'sidebar__controls'}>
         <div className={'sidebar__controls__nav'}>

@@ -226,6 +226,9 @@ const FeedItem = (props: IItemProps) => {
                 :
                     <>
                         <div className={'feed__item__image'}>
+                            <div className={'feed__item__image-author'}>
+                                Author: {props.photo.user.username}
+                            </div>
                             <img src={photo} alt={`${props.photo.id}`} />
                         </div>
                     </>

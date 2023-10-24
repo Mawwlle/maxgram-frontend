@@ -49,11 +49,25 @@
     rotate: 270deg;
     left: 240px;
     top: -36px;
+    z-index: 2;
 }
 
 .feed__item__image {
+    position: relative;
     width: 512px;
     height: 512px;
+}
+
+.feed__item__image-author {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    display: flex;
+    max-width: 256px;
+    flex-wrap: wrap;
+    padding: 4px;
+    border-radius: 4px;
+    background-color: var(--gohan);
 }
 
 .feed__item__image img {
