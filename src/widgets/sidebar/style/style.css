@@ -139,7 +139,7 @@
 
 .row__sidebar__controls__nav {
     display: flex;
-    padding: 0 8px;
+    padding: 0 0 0 16px;
 }
 
 .row__sidebar__create__button {
@@ -154,6 +154,10 @@
 
 .row__sidebar__create__button:hover {
     border: 1px solid var(--piccolo);
+}
+
+.row__sidebar__controls__logout {
+    padding: 0 16px 0 0;
 }
 
 @media (max-width: 1074px) {
