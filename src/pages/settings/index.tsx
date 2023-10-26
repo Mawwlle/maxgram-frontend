@@ -1,6 +1,6 @@
 import Popup from '../../entities/popUp';
 import Container from '../../shared/ui/container';
-import UserPassword from '../../widgets/settings/userPassword';
+// import UserPassword from '../../widgets/settings/userPassword';
 import UserSettings from '../../widgets/settings/userSettings';
 import './style.css';
 import React, { useState } from 'react';
@@ -19,14 +19,14 @@ const Settings = () => {
         <div className={'settings'}>
             {isShowModal && <Popup title={isShowModal.title}/>}
             <Container>
-                <div className={'settings__container'}>
-                    <div className={'settings__container__left'}>
+                {/* <div className={'settings__container'}> */}
+                    {/* <div className={'settings__container__left'}> */}
                         <UserSettings onClickSave={onClickSave} />
-                    </div>
-                    <div className={'settings__container__right'}>
+                    {/* </div> */}
+                    {/* <div className={'settings__container__right'}>
                         <UserPassword onClickSave={onClickSave} />
-                    </div>
-                </div>
+                    </div> */}
+                {/* </div> */}
             </Container>
         </div>
     )
