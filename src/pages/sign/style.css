@@ -1,17 +1,16 @@
 .sign {
-    width: 100vw;
+    padding: 24px;
     height: 100%;
-    position: relative;
-    background-image: url('/src/img/background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #373535;
 }
 
 .sign__container {
     width: 640px;
     border-radius: 8px;
-    background-color: #ce3e9d15;
+    background-color: #686363;
     padding: 16px 24px;
     position: absolute;
     top: 50%;
@@ -24,7 +23,7 @@
 }
 
 .sign__container__success p:hover {
-    color:#646cff;
+    color: #646cff;
 }
 
 .sign__container__controls {
@@ -34,7 +33,7 @@
 }
 
 .sign__container__controls-link {
-    color: #FFFFFF;
+    color: #ccc2c2;
 }
 
 .sign__container__controls-link:hover {
@@ -59,7 +58,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 16px;
-    color: #FFFFFF;
+    color: #bcb8b8;
 }
 
 .sign__container__field input {
@@ -69,4 +68,10 @@
 .sign__container__submit {
     margin-top: 16px;
     color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px) {
+    .sign__container {
+        width: 90%;
+    }
 }

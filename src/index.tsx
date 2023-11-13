@@ -5,33 +5,28 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { throttle } from 'lodash';
-import Settings from './pages/settings';
 import Sidebar from './widgets/sidebar';
 // import Header from './widgets/header';
 import Home from './pages/home';
-import Feed from './pages/feed';
 import Sign from './pages/sign';
-import PostModal from './widgets/postModal';
 import { useEffect, useState } from 'react';
 import api from './api';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import { remove, set } from './store/user';
 import './variables.css';
-import Post from './pages/post';
+import Order from './pages/order';
+import Purchase from './pages/puchase';
+
 
 const AppRouter = () => {
-  const modal = useAppSelector((store) => store.modal);
-  
   return (
     <div>
       {/* <Header /> */}
-      {modal && modal.type === 'post' && <PostModal />}
       <Routes>
-        <Route path="/post" element={<Post />} />
-        <Route path="/feed" element={<Feed />} />
-        <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<Navigate to="/feed" />} />
-      </Routes>  
+        <Route path="/order" element={<Order />} />
+        <Route path="/purchase" element={<Purchase />} />
+      </Routes>
     </div>
   );
 };
@@ -41,7 +36,7 @@ const WatcherAppRouter = () => {
     <>
       {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<Home />}/>
+        <Route path="/" element={<Home />} />
         <Route path="/sign" element={<Sign />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
@@ -49,13 +44,13 @@ const WatcherAppRouter = () => {
   )
 }
 
-const App = () => {  
+const App = () => {
 
   const dispatch = useAppDispatch();
   const isAuth = useAppSelector((store) => store.user.isAuth);
   const [isLoadingUserInfo, setIsLoadingUserInfo] = useState<boolean>(true);
-  
-  const requestAuth = async() => {
+
+  const requestAuth = async () => {
     try {
       await api.users.getSelfUser()
         .then((resp) => {
@@ -71,10 +66,10 @@ const App = () => {
   const renewToken = () => {
     const refreshToken = localStorage.getItem('refresh_token');
     if (refreshToken)
-    api.token.refreshToken(refreshToken)
-      .then((resp) => {
-        localStorage.setItem('access_token', resp.data.access);
-      });
+      api.token.refreshToken(refreshToken)
+        .then((resp) => {
+          localStorage.setItem('access_token', resp.data.access);
+        });
   };
 
   const throttledRenewToken = throttle(renewToken, 250000, { trailing: false });
@@ -84,11 +79,11 @@ const App = () => {
     if (refreshToken) {
       throttledRenewToken();
       setTimeout(() => requestAuth(), 300);
-    
+
       const renewalInterval = setInterval(() => {
         throttledRenewToken();
       }, 250000);
-  
+
       return () => {
         clearInterval(renewalInterval);
       };
@@ -96,7 +91,7 @@ const App = () => {
       dispatch(remove());
       setIsLoadingUserInfo(false);
 
-      return () => void{};
+      return () => void {};
     }
   }, [isAuth]);
 
@@ -114,7 +109,7 @@ const App = () => {
           <div />
           <AppRouter />
         </div>
-      :
+        :
         <div className={'app__watcher'}>
           <WatcherAppRouter />
         </div>

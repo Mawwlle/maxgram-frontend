@@ -1,23 +1,28 @@
 .home {
     padding: 24px;
-    /* background-color: black; */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url('/src/img/background.jpg');
     height: 100%;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #373535;
 }
 
 .home__content {
     padding: 16px 24px;
     border-radius: 8px;
-    width: max-content;
-    height: max-content;
-    position: absolute;
-    transform: translate(50%, 50%);
-    /* background-color: rgba(0, 0, 0, 0.3); */
-    background-color: #ce3e9d15;
-    color: #FFFFFF;
+    background-color: #686363;
+    color: #daddec70;
+    box-shadow: 0 4px 8px rgba(112, 115, 128, 0.15);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .home__content {
+        width: 80%;
+        max-width: 600px;
+        font-size: 18px;
+    }
 }
 
 .home__button {

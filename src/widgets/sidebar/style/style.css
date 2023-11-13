@@ -3,8 +3,7 @@
     width: 320px;
     height: 100vh;
     position: fixed;
-    /* background-color: #282b34; */
-    background: var(--gohan);
+    background-color: #262932;
     display: flex;
     flex-direction: column;
 }
@@ -22,15 +21,6 @@
 
 .sidebar__logo img {
     height: 32px;
-}
-
-.sidebar__profile {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    color: var(--bulma);
 }
 
 .sidebar__profile-avatar {
@@ -56,6 +46,7 @@
     margin: 10px 0 0;
     color: var(--main-trunks);
 }
+
 .sidebar__profile__info-item:first-child {
     border-right: 1px solid var(--main-trunks);
 }
@@ -130,11 +121,15 @@
     height: 32px;
 }
 
-.row__sidebar__controls {
+.sidebar__controls {
     display: flex;
-    width: 100%;
-    align-items: center;
+    flex-direction: column;
+    width: inherit;
+    height: 100%;
     justify-content: space-between;
+    padding-bottom: 32px;
+    margin-top: 16px;
+    /* Добавлен отступ сверху */
 }
 
 .row__sidebar__controls__nav {

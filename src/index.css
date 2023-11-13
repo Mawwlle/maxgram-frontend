@@ -23,6 +23,7 @@ a {
   color: var(--main-trunks);
   text-decoration: inherit;
 }
+
 a:hover {
   color: var(--piccolo);
 }
@@ -51,10 +52,12 @@ button {
   cursor: pointer;
   transition: border-color 0.25s, color 0.25s;
 }
+
 button:hover {
   border-color: var(--piccolo);
   color: var(--piccolo);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -80,6 +83,7 @@ button:focus-visible {
   height: 100vh;
   display: grid;
   grid-template-columns: 320px 1fr;
+  background-color: #1a1a1a;
 }
 
 .app__watcher {

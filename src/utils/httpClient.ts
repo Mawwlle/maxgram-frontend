@@ -28,7 +28,7 @@ const logoutAndClearTokens = () => {
 };
 
 const httpClient = axios.create({
-    baseURL: 'http://89.208.137.143:8000/', // Configure this properly
+    baseURL: 'http://localhost:8000/', // Configure this properly
     timeout: 60000,
     headers: {
         'Content-Type': 'application/json'

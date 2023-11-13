@@ -1,0 +1,72 @@
+.feed {
+    padding: 24px;
+    background-color: #515054;
+}
+
+.feed__container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 32px; */
+    row-gap: 32px;
+    align-items: center;
+    color: #929191;
+}
+
+.order-block {
+    width: 400px;
+    padding: 20px;
+    background-color: #515054;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.feed_header {
+    color: #908d8d;
+}
+
+.order-inputs-container {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    /* больше отступ снизу */
+}
+
+.order-input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-button {
+    background-color: #2980b9;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.order-button:hover {
+    background-color: #216ba5;
+}
+
+.separator {
+    margin-top: 10px;
+    /* отступ сверху */
+    margin-bottom: 10px;
+    /* отступ снизу */
+}
+
+.feed_container {
+    margin-top: 20px;
+    /* больше отступ сверху */
+}

@@ -47,7 +47,7 @@ const Sign = () => {
         } else {
             api.users.createUser(params)
                 .then((resp) => {
-                    setIsSuccess(true); 
+                    setIsSuccess(true);
                     console.log(resp.data);
                 })
                 .catch((e) => {
@@ -73,63 +73,63 @@ const Sign = () => {
     return (
         <div className={'sign'}>
             <div className={'sign__container'}>
-                {isSuccess ? 
-                elSignSuccess
-                   : 
-                <>
-                    <div className={'sign__container__controls'}>
-                        {isSign ?
-                        <h3>Sign In</h3>
-                        :
-                        <h3>Sign Up</h3>
-                        }
-                        <Link to={'/'} className={'sign__container__controls-link'}>
-                            <FontAwesomeIcon icon={faArrowLeft} className={'sign__container__controls-link-icon'} />
-                            {'back'}
-                        </Link>
-                    </div>
-                    <div className={'sign__container__switch'}>
-                        {isSign ?
-                            <>
-                                <p>Don't have account yet?</p>
-                                <span onClick={() => setIsSign((prev) => !prev)}>Sign Up</span>
-                            </>
-                        :
-                            <>
-                                <p>Already have account?</p>
-                                <span onClick={() => setIsSign((prev) => !prev)}>Sign In</span>
-                            </>
-                        }
-                    </div>
-                    <form onSubmit={handleSubmit((data) => onClickSignUp(data))}>
-                        <InputField 
-                            register={register}
-                            required={true}
-                            minLength={4}
-                            error={errors.username?.message}
-                            name={'username'} 
-                            title={'Username'} 
-                            placeholder={'Enter username'} 
-                            className={'sign__container__field'} 
-                        />
-                        <InputField 
-                            register={register} 
-                            required={true}
-                            minLength={8}
-                            error={errors.password?.message}
-                            name={'password'} 
-                            title={'Password'} 
-                            type={'password'} 
-                            placeholder={'Enter password'} 
-                            className={'sign__container__field'} 
-                        />
-                        {isSign ?
-                            <Button title={'Sign In'} type={'submit'} className={'sign__container__submit'} />
-                        :
-                            <Button title={'Sign Up'} type={'submit'} className={'sign__container__submit'} />
-                        }
-                    </form>
-                </>
+                {isSuccess ?
+                    elSignSuccess
+                    :
+                    <>
+                        <div className={'sign__container__controls'}>
+                            {isSign ?
+                                <h3>Войти</h3>
+                                :
+                                <h3>Зарегистрироваться</h3>
+                            }
+                            <Link to={'/'} className={'sign__container__controls-link'}>
+                                <FontAwesomeIcon icon={faArrowLeft} className={'sign__container__controls-link-icon'} />
+                                {'back'}
+                            </Link>
+                        </div>
+                        <div className={'sign__container__switch'}>
+                            {isSign ?
+                                <>
+                                    <p>Уже есть аккаунт?</p>
+                                    <span onClick={() => setIsSign((prev) => !prev)}>Войти</span>
+                                </>
+                                :
+                                <>
+                                    <p>Ещё нет аккаунта?</p>
+                                    <span onClick={() => setIsSign((prev) => !prev)}>Зарегистрироваться</span>
+                                </>
+                            }
+                        </div>
+                        <form onSubmit={handleSubmit((data) => onClickSignUp(data))}>
+                            <InputField
+                                register={register}
+                                required={true}
+                                minLength={4}
+                                error={errors.username?.message}
+                                name={'username'}
+                                title={'Имя пользователя'}
+                                placeholder={'Уникальное имя пользователя'}
+                                className={'sign__container__field'}
+                            />
+                            <InputField
+                                register={register}
+                                required={true}
+                                minLength={8}
+                                error={errors.password?.message}
+                                name={'password'}
+                                title={'Пароль'}
+                                type={'password'}
+                                placeholder={'Введите пароль'}
+                                className={'sign__container__field'}
+                            />
+                            {isSign ?
+                                <Button title={'Войти'} type={'submit'} className={'sign__container__submit'} />
+                                :
+                                <Button title={'Зарегистрироваться'} type={'submit'} className={'sign__container__submit'} />
+                            }
+                        </form>
+                    </>
                 }
             </div>
         </div>
